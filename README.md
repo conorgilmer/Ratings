@@ -17,3 +17,6 @@ There is also an anaconda notebook version *ratinggraph.ipynb*
 
 ###Rating Graph
 Plots a line graph from a csv file of ratings over the years, file format is Year, Rating. There is a python script and ananconda notebook version of this
+
+##Java Version
+Reads in a csv file calcualtes the rating change over the season from the games in the file, and generates  report object and prints it to the screen.§
