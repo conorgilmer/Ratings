@@ -26,7 +26,7 @@ public class Results
 
 	public String toString()
 	{
-		return "Season Info " + "\n" +
+		return "Season Info Summary" + "\n" +
 		"Games        = " + games + "\n" +
 		"AvgRating    = " + avgrating + "\n" +
 		"Change       = " + change + "\n" +

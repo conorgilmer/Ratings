@@ -1,4 +1,7 @@
-/* RatingCalc.java 
+/* RatingCalc.java
+ * Read in a Csv file with games details
+ * Calculate the Rating Change
+ * 
  * by Conor Gilmer (conor.gilmer@gmail.com)
  */
 
@@ -32,6 +35,7 @@ public final class RatingCalc {
 		System.out.format("%.2f", num);
 	} /* end of displayf */
 
+	/* calculate the rating change from a game */
 	private static double calculateChange(double yours, double opponents, double result) {
 		double change = 0;
 		double rdiff = opponents - yours;
@@ -39,14 +43,14 @@ public final class RatingCalc {
 		if (result == 1) {
 			change = (((rdiff / 100) * 4) + 16);
 			if (change <= 0) {
-				change = 0;
+				change = 0; // ensure you cant lose points by winning
 			}
 		} else if (result == 0.5) {
 			change = (rdiff / 100) * 4;
 		} else if (result == 0) {
 			change = (((rdiff / 100) * 4) - 16);
 			if (change >= 0) {
-				change = 0;
+				change = 0; // ensure you cant win points by losing 
 			}
 
 		} else {display(" NO GAME RESULT");}
@@ -57,9 +61,8 @@ public final class RatingCalc {
 	} /* end of calculateChange */
 
 
-	/* read from a file and print on screen */
-	private static void readFile(String filename) {
-		try {
+	/* read from a file and print on screen and call calculateChange and store in Results Object */
+	private static Results readFile(String filename) throws IOException {
             		File dataFile         = new File(filename);
 			FileReader fileReader = new FileReader(dataFile);
 			BufferedReader reader = new BufferedReader(fileReader);
@@ -90,19 +93,21 @@ public final class RatingCalc {
 			avgr = avgr/games;
 
 			Results season = new Results(games, avgr, total_change, results);
-			display(season.toString());
-		} catch (IOException x) {
-    			System.err.format("IOException: %s%n", x);
-		}
+			return season;
 		
 	} /* end of readFile */
 
 
 	/* Main Function */
 	public static void main (String[] args) {
-
+		
 		display("\n *** Starting ***\n");
-		readFile("results.csv");
+		try {
+		Results newseason = readFile("results.csv");
+		display(newseason.toString());
+		} catch (IOException x) {
+    			System.err.format("IOException: %s%n", x);
+		}
 		display("\n *** The End  *** \n");
 	} /* end of main */
 
