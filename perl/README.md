@@ -1,0 +1,21 @@
+#Rating.pl
+read in a csv file and calculate the grading chnage over a year
+
+##Sample Ouput
+>
+> Chess Rating Result Calculator
+>
+> Rating = 1600
+>
+>Player	  Club	  Grade	 Result	Change
+>Tony	  Dub	  1922 	 0	-3.12 
+>Joe	  Cork	  1752 	 0.5	6.08 
+>John	  Rath	  1722 	 0	-11.12 
+>Pat	  Dun	  1422 	 1	8.88 
+>Pat	  Dun	  990 	 1	0 
+>Dave	  PCC	  1322 	 0.5	-11.12 
+>Kevin	  BCC	  1522 	 0	-19.12 
+>Tom	  Home	  1822 	 1	24.88 
+>	 Avg	  1559.25 	 0.5	 -4.64
+>
+> New Rating = 1595.36
