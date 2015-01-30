@@ -3,6 +3,10 @@
 Read in a csv file of games with Player, Club, Rating, Result
 Calculate the rating changes as a result of the games
 
+Can be run using ant run (or ant all)
+also can be run using 
+> java -jar build/jar/RatingCalc.jar > output.txt
+
 ** Output **
 >  *** Starting ***
 >  Contents of results.csv
