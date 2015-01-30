@@ -1,0 +1,28 @@
+# RatingCalc.java
+
+Read in a csv file of games with Player, Club, Rating, Result
+Calculate the rating changes as a result of the games
+
+** Output **
+>  *** Starting ***
+>  Contents of results.csv
+>      
+>      1	 Tony	 Dub	1922.0	0.0	-5.119999999999999
+>      2	 Joe	 Cork	1752.0	0.5	4.08
+>      3	 John	 Rath	1722.0	0.0	-13.120000000000001
+>      4	 Pat	 Dun	1422.0	1.0	6.880000000000001
+>      5	 Pat	 Dun	990.0	1.0	0.0
+>      6	 Dave	 PCC	1322.0	0.5	-13.12
+>      7	 Kevin	 BCC	1522.0	0.0	-21.12
+>      8	 Tom	 Home	1822.0	1.0	22.88
+>  
+>  End of results.csv
+>  
+>  Season Info Summary
+>  Games        = 8
+>  AvgRating    = 1559.25
+>  Change       = -18.639999999999997
+>  Results      = 4.0
+>  
+> 
+>  *** The End  *** 
