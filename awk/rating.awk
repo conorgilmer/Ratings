@@ -15,7 +15,8 @@ BEGIN {	FS = ","
 	
 	if ( $4 == 0){
 		extra= -16
-		extra = extra + (($3-mygrade)/25);}
+		extra = extra + (($3-mygrade)/25)
+		if ( extra > 0) extra=0;}
 	else if ( $4 == 0.5){
 		extra= 0
 		extra = extra + (($3-mygrade)/25);}
