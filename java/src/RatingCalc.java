@@ -91,6 +91,7 @@ public final class RatingCalc {
     			}
 			display("\nEnd of " + filename + "\n");
 			avgr = avgr/games;
+			reader.close();
 
 			Results season = new Results(games, avgr, total_change, results);
 			return season;
