@@ -1,6 +1,6 @@
 #!/bin/awk
 # Usage : awk -f rating.awk results.csv > rating.out
-# or   cat rating.csv | awk -f trip.awk
+# or   cat rating.csv | awk -f rating.awk
 # calculate the average Rating Result and my rating change
 # 
 #

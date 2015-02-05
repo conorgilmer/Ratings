@@ -1,13 +1,13 @@
 #!/bin/awk
-# Usage : awk -f rating.awk results.csv > rating.out
-# or   cat rating.csv | awk -f trip.awk
+# Usage : awk -f ratingmma.awk results.csv > ratingmma.out
+# or   cat rating.csv | awk -f ratingmma.awk
 # calculate the average Rating Result and my rating change
 # 
 #
 BEGIN {	FS = ","
 	mygrade =1650
 	change =0
-	min=2500
+	min=2500i #yeah right!!
 	max=700
 	print "\nChess Ratings Report"
 	printf "\nStart Rating %d\n", mygrade;
