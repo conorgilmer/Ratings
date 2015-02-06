@@ -74,6 +74,8 @@ public final class RatingCalc {
 			double change =0;
 			double total_change =0;
 			double results =0;
+			double minR = 2500;
+			double maxR = 0;
 			display("Contents of " + filename + "\n");
     			while ((line = reader.readLine()) != null) {
 				splitArray = line.split(",");
@@ -83,6 +85,10 @@ public final class RatingCalc {
 							Double.parseDouble(splitArray[3]),
 							Double.parseDouble(splitArray[4]));
 				results = results + Double.parseDouble(splitArray[4]);
+				if (minR > Double.parseDouble(splitArray[3])) {
+					minR = Double.parseDouble(splitArray[3]);}
+				if (maxR < Double.parseDouble(splitArray[3])) {
+					maxR = Double.parseDouble(splitArray[3]);}
 				avgr = avgr + Double.parseDouble(splitArray[3]);
 				change = calculateChange(yourrating, Double.parseDouble(splitArray[3]), Double.parseDouble(splitArray[4]));
 				total_change = total_change + change;
@@ -93,7 +99,7 @@ public final class RatingCalc {
 			avgr = avgr/games;
 			reader.close();
 
-			Results season = new Results(games, avgr, total_change, results);
+			Results season = new Results(games, avgr,minR,maxR, total_change, results);
 			return season;
 		
 	} /* end of readFile */
