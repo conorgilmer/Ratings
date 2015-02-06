@@ -54,17 +54,29 @@ char** str_split(char* a_str, const char a_delim)
 } /* end of str_split */
 
 
+/* calculate rating change for a game */
+float calculate_rating(float yours, float opponents, float result)
+{
+	float change = 0;
+
+	return change;
+
+
+} /* end of calculate-rating */ 
+
 /* main function */
 int main(void)
 {
 	float yourrating = 1650;
 	float newrating  = 0;
-	float change   = 0;
-	float rdiff   = 0;
-	float avgrat   = 0;
-	float avgres   = 0;
-	float results  = 0;
-	int games      = 0;
+	float opponent   = 0;
+	float change     = 0;
+	float rdiff      = 0;
+	float avgrat     = 0;
+	float avgres     = 0;
+	float results    = 0;
+	float result     = 0;
+	int games        = 0;
 
 	char** colitems;
 
@@ -78,20 +90,24 @@ int main(void)
     	if (!ptr_file)
        		return 1;
 
+		printf("\nGames\tName\tClub\tGrade\tResult\tRDiff\tChange\n\n");
  	while (fgets(buf,1000, ptr_file)!=NULL)
 	{
 		colitems = str_split(buf, ',');
-		avgrat = avgrat + atof(colitems[3]);
-		results = results + atof(colitems[4]);
+		avgrat   = avgrat + atof(colitems[3]);
+		results  = results + atof(colitems[4]);
 		games++;
-		rdiff = atof(colitems[3]) - yourrating;
-		printf("%s\t%s\t%s\t%.0f\t%.1f\t%.2f\n", colitems[0],colitems[1],colitems[2],atof(colitems[3]),atof(colitems[4]), rdiff);
+		opponent = atof(colitems[3]);
+		result   = atof(colitems[4]);
+		rdiff    = atof(colitems[3]) - yourrating;
+		change   = calculate_rating(yourrating, opponent, result);
+		printf("%s\t%s\t%s\t%.0f\t%.1f\t%.2f\t%.2f\n", colitems[0],colitems[1],colitems[2],atof(colitems[3]),atof(colitems[4]), rdiff, change);
 	}
 	fclose(ptr_file);
 	
 	avgrat = avgrat / games;
 	avgres = results / (float)games;
-	printf("\nAverage\t\t\t  %.0f\t%.1f\n",avgrat, avgres);	
+	printf("\nAverage\t\t\t  %.0f\t%.1f  Change\t%.2f\n",avgrat, avgres, change);	
 	newrating = yourrating + change;
 	printf("\n\n Season Summary\n");
 	printf("\n ------------------------------");
