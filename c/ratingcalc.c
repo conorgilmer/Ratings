@@ -1,4 +1,9 @@
-/* ratingcalc.c */
+/* ratingcalc.c                                   */
+/* Calculate your Rating change over a season     */
+/* read in results from a csv file (results.csv)  */
+/* and calculate rating change and averages etc.  */
+/* by Conor Gilmer                                */
+
 #include<stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -55,11 +60,22 @@ char** str_split(char* a_str, const char a_delim)
 
 
 /* calculate rating change for a game */
-float calculate_rating(float yours, float opponents, float result)
+float calculate_rating(float mygrade, float opponents, float result)
 {
-	float change = 0;
+	float extra   = 0;
+	if ( result == 0){
+                extra = -16;
+                extra = extra + ((opponents-mygrade)/25);
+                if ( extra > 0) extra=0;}
+        else if ( result == 0.5){
+                extra = 0;
+                extra = extra + ((opponents-mygrade)/25);}
+        else if ( result == 1){
+                extra = 16;
+                extra = extra + ((opponents-mygrade)/25);
+                if ( extra < 0) extra=0;}
 
-	return change;
+	return extra;
 
 
 } /* end of calculate-rating */ 
@@ -67,16 +83,16 @@ float calculate_rating(float yours, float opponents, float result)
 /* main function */
 int main(void)
 {
-	float yourrating = 1650;
-	float newrating  = 0;
-	float opponent   = 0;
-	float change     = 0;
-	float rdiff      = 0;
-	float avgrat     = 0;
-	float avgres     = 0;
-	float results    = 0;
-	float result     = 0;
-	int games        = 0;
+	float  yourrating = 1650;
+	float  newrating  = 0;
+	float  opponent   = 0;
+	float  change     = 0;
+	float  rdiff      = 0;
+	float  avgrat     = 0;
+	float  avgres     = 0;
+	float  results    = 0;
+	float  result     = 0;
+	int    games      = 0;
 
 	char** colitems;
 
