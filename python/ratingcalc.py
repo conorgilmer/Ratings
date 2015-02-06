@@ -7,13 +7,16 @@ totalresults = 0.0
 rating       = 1650
 change       = 0
 extra        = 0
+minR	     = 2500
+maxR         = 0
 
 dataFile = open('results.csv', "rb")
 reader = csv.reader(dataFile)
 
 print "\n *** Starting *** \n"
-print " Chess Rating Rating Calculator "
-print "Start Rating " + str(rating) + "\n"
+print " Chess Rating Rating Calculator \n"
+print " Player " + "Wood Pusher"
+print " Start Rating " + str(rating) + "\n"
 
 rownum       = 0 #row number
 for row in reader:
@@ -22,6 +25,10 @@ for row in reader:
   if rownum <> 0:
     rdiff = int(row[2]) - rating
     totalgrades = totalgrades + int(row[2]) 
+    if minR > int(row[2]):
+	minR = int(row[2])
+    if maxR < int(row[2]):
+	maxR = int(row[2])
     totalresults = totalresults + float(row[3])
     res = float(row[3])
     opp = float(row[2])
@@ -49,9 +56,11 @@ games = rownum - 1
 
 dataFile.close()
 
-print "\nAverage\t\t" + str(totalgrades/games) + "\t" + str(totalresults/games) +"\tChange " + str(change)
-print "games " + str(games)
+print "\n Minimum:\t" + str(minR) + "\n"
+print " Maximum:\t" + str(maxR) 
+print "\n Average:\t" + str(totalgrades/games) + "\t" + str(totalresults/games) +"\tChange:" + str(change) + "\n"
+print " Games " + str(games)
 
-print "New Rating " + str(rating + change)
+print " New Rating " + str(rating + change)
 
 print "\n *** The End *** \n"
