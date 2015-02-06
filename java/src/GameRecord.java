@@ -31,7 +31,7 @@ public class GameRecord
 
 	public String toLine()
 	{
-		return "" + game + "\t" + player + "\t" + club + "\t" + formatDouble(rating) + "\t" + formatDouble(result) + ":";
+		return "" + game + "\t" + player + "\t" + club + "\t" + formatDouble(rating) + "\t" + formatDouble(result);
 	}
 
 	public String formatDouble(Double d){
