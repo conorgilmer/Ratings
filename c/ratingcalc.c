@@ -87,12 +87,15 @@ int main(void)
 	float  newrating  = 0;
 	float  opponent   = 0;
 	float  change     = 0;
+	float  tchange    = 0;
 	float  rdiff      = 0;
 	float  avgrat     = 0;
 	float  avgres     = 0;
 	float  results    = 0;
 	float  result     = 0;
 	int    games      = 0;
+	float  min        = 2750;
+	float  max        = 0;
 
 	char** colitems;
 
@@ -114,17 +117,25 @@ int main(void)
 		results  = results + atof(colitems[4]);
 		games++;
 		opponent = atof(colitems[3]);
+		if (opponent < min) {
+			min = opponent;}
+
+		if (opponent > max) {
+			max = opponent;}
 		result   = atof(colitems[4]);
 		rdiff    = atof(colitems[3]) - yourrating;
 		change   = calculate_rating(yourrating, opponent, result);
+		tchange = tchange + change;
 		printf("%s\t%s\t%s\t%.0f\t%.1f\t%.2f\t%.2f\n", colitems[0],colitems[1],colitems[2],atof(colitems[3]),atof(colitems[4]), rdiff, change);
 	}
 	fclose(ptr_file);
 	
 	avgrat = avgrat / games;
 	avgres = results / (float)games;
-	printf("\nAverage\t\t\t  %.0f\t%.1f  Change\t%.2f\n",avgrat, avgres, change);	
-	newrating = yourrating + change;
+	printf("\nMinimum\t\t\t%.0f\n", min);	
+	printf("Maximum\t\t\t%.0f\n", max);	
+	printf("\nAverage\t\t\t  %.0f\t%.1f  Change\t%.2f\n",avgrat, avgres, tchange);	
+	newrating = yourrating + tchange;
 	printf("\n\n Season Summary\n");
 	printf("\n ------------------------------");
 	printf("\n Games                \t = %d",   games);
