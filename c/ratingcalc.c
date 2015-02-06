@@ -126,7 +126,7 @@ int main(void)
 		rdiff    = atof(colitems[3]) - yourrating;
 		change   = calculate_rating(yourrating, opponent, result);
 		tchange = tchange + change;
-		printf("%s\t%s\t%s\t%.0f\t%.1f\t%.2f\t%.2f\n", colitems[0],colitems[1],colitems[2],atof(colitems[3]),atof(colitems[4]), rdiff, change);
+		printf("%s\t%s\t%s\t%04.0f\t%.1f\t%+03.2f\t%+5.2f\n", colitems[0],colitems[1],colitems[2],atof(colitems[3]),atof(colitems[4]), rdiff, change);
 	}
 	fclose(ptr_file);
 	
@@ -143,7 +143,7 @@ int main(void)
 	printf("\n Avg. Opponents Rating\t = %.2f", avgrat);
 	printf("\n Your New Rating      \t = %.0f",   newrating);
 	printf("\n ------------------------------\n");
-	printf("\n *** The End  ***\n");
+	printf("\n *** The End  ***\n\n");
     	return 0;
 
 
