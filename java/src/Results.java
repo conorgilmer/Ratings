@@ -1,5 +1,6 @@
 package ratings;
 import java.util.*;
+import java.text.DecimalFormat;
 
 /* class for the seasons results and for writing report */
 public class Results
@@ -33,6 +34,12 @@ public class Results
 	public double getChange()    { return change;} 
 	public double getResult()    { return result;} 
 
+        public String formatDouble(Double d){
+                DecimalFormat df = new DecimalFormat("####0.00");
+                return df.format(d);
+        }
+
+
 	public String toString()
 	{
 		return "Season Info Summary" + "\n" +
@@ -40,7 +47,7 @@ public class Results
 		"AvgRating    = " + avgrating + "\n" +
 		"Minimum R    = " + minR + "\n" +
 		"Maximim R    = " + maxR + "\n" +
-		"Change       = " + change + "\n" +
+		"Change       = " + formatDouble(change) + "\n" +
 		"Results      = " + result + "\n" ;
 	}
 }

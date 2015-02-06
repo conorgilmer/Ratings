@@ -8,6 +8,7 @@
 package ratings;
 import java.util.Scanner;
 import java.io.*;
+import java.text.DecimalFormat;
 
 public final class RatingCalc {
 	/* initialise variables */
@@ -93,7 +94,7 @@ public final class RatingCalc {
 				change = calculateChange(yourrating, Double.parseDouble(splitArray[3]), Double.parseDouble(splitArray[4]));
 				total_change = total_change + change;
 				games++;
-				display(record.toLine() + "\t" + change);
+				display(record.toLine() + "\t" + formatDouble(change));
     			}
 			display("\nEnd of " + filename + "\n");
 			avgr = avgr/games;
@@ -104,6 +105,11 @@ public final class RatingCalc {
 		
 	} /* end of readFile */
 
+
+        public static String formatDouble(Double d){
+                DecimalFormat df = new DecimalFormat("####0.00");
+                return df.format(d);
+        }
 
 	/* Main Function */
 	public static void main (String[] args) {

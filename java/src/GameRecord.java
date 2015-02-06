@@ -1,5 +1,6 @@
 package ratings;
 import java.util.*;
+import java.text.DecimalFormat;
 
 public class GameRecord
 {
@@ -30,7 +31,12 @@ public class GameRecord
 
 	public String toLine()
 	{
-		return "" + game + "\t" + player + "\t" + club + "\t" + rating + "\t" + result;
+		return "" + game + "\t" + player + "\t" + club + "\t" + formatDouble(rating) + "\t" + formatDouble(result) + ":";
+	}
+
+	public String formatDouble(Double d){
+		DecimalFormat df = new DecimalFormat("####0.00");
+		return df.format(d);
 	}
 
 	public String toString()
@@ -39,8 +45,8 @@ public class GameRecord
 		"Game          = " + game + "\n" +
 		"Player        = " + player + "\n" +
 		"Club          = " + club + "\n" +
-		"Rating        = " + rating + "\n" +
-		"Result        = " + result + "\n" ;
+		"Rating        = " + formatDouble(rating) + "\n" +
+		"Result        = " + formatDouble(result) + "\n" ;
 	}
 }
 
