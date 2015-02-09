@@ -65,9 +65,12 @@ sub main
   $avg_grade = $total_grade / $games;
   $avg_result = $total_result / $games;
 
-  print("\t Avg\t  $avg_grade \t $avg_result\t $change\n");
+  printf("\t Avg\t %.0f \t %.1f \t %.2f\n", $avg_grade, $avg_result, $change);
   $rating = $rating + $change;
-  print("\n New Rating = $rating\n");  
+  print("\n Season Summary      ");  
+  print("\n Score         = $total_result");  
+  print("\n Rating Change = $change");  
+  printf("\n New Rating    = %.0f\n", $rating);  
   close(INPUT);
 }
 
