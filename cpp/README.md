@@ -1,5 +1,11 @@
-#CPP Rating Calculator
-Calculate chess rating from a game using +/- 16 + ((opponents - yours) *25)
+#CPP Chess Games Record System
+Based on a college project for students or employees record system, but for chess games with calculating the resulting rating change from a game
++ Add a Game
++ List all Games
++ Search for a Game
++ Update a Game
++ Delete a Game
++ Generate a report - Calculating chess rating from a game using +/- 16 + ((opponents - yours) *25)
 
 
 ## Example
