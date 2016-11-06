@@ -21,4 +21,7 @@ Compiling with cobc (OpenCobol/GnuCobol)
 compile and generate an executable 
 cobc -x hello.cob
 
+compiling program with sub-programs
+cobc -x program.cob
+cobc -m subprogram.cob
 
